@@ -12,24 +12,33 @@ This repository contains scripts to download, process, and upload city-level vot
 
 ### Installation
 1. Clone this repository
-2. Install required packages:
+2. Navigate to the project directory:
    ```bash
-   pip install pandas selenium webdriver-manager gspread gspread-dataframe oauth2client
+   cd "iVoted Internship"
    ```
-3. Place your Google Cloud service account JSON file in the project directory
-4. Update the `SPREADSHEET_ID` in `UploadtoGoogleSheets.py` with your target Google Sheet
+3. Install required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Place your Google Cloud service account JSON file in the `code 2/` directory
+5. Update the `SPREADSHEET_ID` in `code 2/UploadtoGoogleSheets.py` with your target Google Sheet
 
 ## 📁 Project Structure
 
 ```
-code 2/
-├── main.py                    # Main data processing script
-├── utility.py                 # Data aggregation functions
-├── UploadtoGoogleSheets.py   # Google Sheets upload script
-├── get_cookies_for_login.py  # Cookie management for web scraping
-├── files_for_processing/     # Raw downloaded data files
-├── results/                  # Processed city-level CSV files
-└── README.md                 # This file
+iVoted Internship/
+├── README.md                 # This file
+├── requirements.txt          # Python dependencies
+├── .gitignore               # Git ignore rules
+└── code 2/
+    ├── main.py              # Main data processing script
+    ├── utility.py           # Data aggregation functions
+    ├── UploadtoGoogleSheets.py # Google Sheets upload script
+    ├── get_cookies_for_login.py # Cookie management for web scraping
+    ├── setup.py             # Automated setup script
+    ├── config_example.py    # Example configuration
+    ├── files_for_processing/ # Raw downloaded data files
+    └── results/             # Processed city-level CSV files
 ```
 
 ## 🔧 Usage
@@ -75,12 +84,12 @@ python UploadtoGoogleSheets.py
 2. Enable Google Sheets API
 3. Create a service account and download JSON credentials
 4. Share your target Google Sheet with the service account email
-5. Update `SPREADSHEET_ID` in `UploadtoGoogleSheets.py`
+5. Update `SPREADSHEET_ID` in `code 2/UploadtoGoogleSheets.py`
 
 ### File Paths
-- **Data processing**: Files are saved to `results/` directory
-- **Upload script**: Reads from `results/` directory
-- **Raw downloads**: Stored in `files_for_processing/` directory
+- **Data processing**: Files are saved to `code 2/results/` directory
+- **Upload script**: Reads from `code 2/results/` directory
+- **Raw downloads**: Stored in `code 2/files_for_processing/` directory
 
 ## 🎯 Cities Currently Processed
 
@@ -89,7 +98,7 @@ The script processes these cities by default:
 - Asheville city, NC  
 - Miami city, FL
 
-To add/remove cities, edit the `cities` list in `main.py` and `CITY_FILES` in `UploadtoGoogleSheets.py`.
+To add/remove cities, edit the `cities` list in `code 2/main.py` and `CITY_FILES` in `code 2/UploadtoGoogleSheets.py`.
 
 ## 🚨 Troubleshooting
 
@@ -107,8 +116,8 @@ To add/remove cities, edit the `cities` list in `main.py` and `CITY_FILES` in `U
 
 **Missing city files:**
 - Ensure the city name format matches exactly (e.g., "Charlotte city, NC")
-- Check that both `{city}.csv` and `{city}_cvap.csv` exist in `results/`
-- Verify the city is included in both `main.py` and `UploadtoGoogleSheets.py`
+- Check that both `{city}.csv` and `{city}_cvap.csv` exist in `code 2/results/`
+- Verify the city is included in both `code 2/main.py` and `code 2/UploadtoGoogleSheets.py`
 
 ### Debug Mode
 Add print statements or check the console output for detailed progress information. The scripts provide verbose logging of each step.
